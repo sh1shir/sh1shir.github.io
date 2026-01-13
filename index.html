@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shishir Bhatta - Aerospace Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'VT323', monospace;
+            line-height: 1.6;
+            color: #333;
+            background: transparent;
+            font-size: 20px;
+            position: relative;
+        }
+
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        header {
+            background: transparent;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2em;
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #a8dadc;
+            margin-bottom: 30px;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .links a {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.7em;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 28px;
+            background: rgba(168, 218, 220, 0.1);
+            border: 2px solid rgba(168, 218, 220, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 400;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .links a:hover {
+            background: #a8dadc;
+            color: #1a1a2e;
+            border-color: #a8dadc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(168, 218, 220, 0.4);
+        }
+
+        .links a:active {
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px;
+        }
+
+        section {
+            background: #fff;
+            margin-bottom: 30px;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.5em;
+            margin-bottom: 25px;
+            color: #1a1a2e;
+            border-bottom: 3px solid #a8dadc;
+            padding-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        h3 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        .about-content {
+            font-size: 1.15em;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-tag {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.6em;
+            background: #e9ecef;
+            padding: 10px 18px;
+            border-radius: 20px;
+            color: #495057;
+        }
+
+        .project-card {
+            border-left: 4px solid #a8dadc;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .project-card h3 {
+            color: #1a1a2e;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            margin-bottom: 10px;
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        .tech-stack {
+            color: #6c757d;
+            font-style: italic;
+            margin-top: 10px;
+            font-size: 1.05em;
+        }
+
+        .project-link {
+            font-family: 'Press Start 2P', cursive;
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 22px;
+            background: #1a1a2e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.65em;
+            font-weight: 400;
+        }
+
+        .project-link:hover {
+            background: #16213e;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 26, 46, 0.3);
+        }
+
+        .project-link:active {
+            transform: translateY(0);
+        }
+
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-item h3 {
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+
+        .experience-item .role {
+            color: #6c757d;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .experience-item ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .experience-item li {
+            margin-bottom: 8px;
+            color: #495057;
+            font-size: 1.1em;
+        }
+
+        footer {
+            font-family: 'Press Start 2P', cursive;
+            background: transparent;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            /* margin-top: 40px; */
+            font-size: 0.7em;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.3em;
+            }
+            
+            section {
+                padding: 25px;
+            }
+            
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .links a {
+                font-size: 0.6em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    
+    <header>
+        <h1>Shishir Bhatta</h1>
+        <p>Aerospace Engineering Student | GNC & Flight Software</p>
+        <div class="links">
+            <a href="mailto:bhattashishir@gmail.com">Email</a>
+            <a href="https://linkedin.com/in/shishir-bhatta7" target="_blank">LinkedIn</a>
+            <a href="https://github.com/sh1shir" target="_blank">GitHub</a>
+            <a href="files/Bhatta_Shishir_Resume_82025.pdf" target="_blank">Resume</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a senior at the University of Illinois Urbana-Champaign pursuing a B.S. in Aerospace Engineering with a minor in Computer Science. I specialize in Guidance, Navigation, and Control (GNC) systems and flight software for autonomous systems.</p>
+                
+                <p>My experience spans from developing route-planning algorithms for autonomous vehicles at Anduril Industries to designing control systems for hydrofoil vessels at Brunswick. I'm passionate about the intersection of aerospace and software engineering, particularly in creating robust, safety-critical systems for autonomous operations.</p>
+                
+                <p>Currently, I'm conducting research at the ACXIS Lab on SLAM-augmented vision-language models for robotic decision-making.</p>
+            </div>
+            
+            <div class="skills">
+                <span class="skill-tag">Flight Software</span>
+                <span class="skill-tag">Control Theory</span>
+                <span class="skill-tag">Kalman Filters</span>
+                <span class="skill-tag">Reinforcement Learning</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C/C++</span>
+                <span class="skill-tag">Rust</span>
+                <span class="skill-tag">MATLAB</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">JAX</span>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Industry Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Anduril Industries</h3>
+                <p class="role">Software Engineering Intern | May 2025 - October 2025</p>
+                <ul>
+                    <li>Architected route-planning algorithm for vehicle management system to ensure safety-critical requirements</li>
+                    <li>Developed internal tooling for Roadrunner manufacturing team to aid in hardware verification</li>
+                    <li>Verified software module functionality based on airworthiness requirements</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>Brunswick</h3>
+                <p class="role">Controls Engineering Intern | Jan 2025 - May 2025</p>
+                <ul>
+                    <li>Modeled hydrofoil vessel dynamics with active roll and pitch control using high-fidelity Python simulation</li>
+                    <li>Designed control assembly box meeting engineering deliverables for customer comfort and performance</li>
+                    <li>Programmed PID and LQR controllers comparing efficiency, performance, and robustness tradeoffs</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>AstroForge</h3>
+                <p class="role">Flight Software Engineering Intern | June 2024 - Aug 2024</p>
+                <ul>
+                    <li>Developed SITL environment for ADCS components in Rust, enhancing automation in integration testing</li>
+                    <li>Containerized FSW environment with LXC, enabling software execution without hardware</li>
+                    <li>Integrated CI pipeline check to verify telemetry data for emulation and verification</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            
+            <div class="project-card">
+                <h3>Illinois Space Society - Spaceshot GNC System</h3>
+                <p>I attribute the majority of my technical knowledge to my favorite UIUC club. I spent 3+ years working as a GNC and FSW engineer, eventually becoming the GNC subteam lead in 2024-25. My interest in the cross-section of software and aerospace engineering began here. I would like to highlight a few projects I've worked on in my time:</p>
+                <div style="margin-left: 20px; margin-top: 15px;">
+                    <div style="text-align: center;">
+                        <a href="https://github.com/ISSUIUC/ISS-Controls" class="project-link" target="_blank">Extended Kalman Filter (EKF)</a>
+                    </div>
+                    <p style="margin-top: 12px;">My team and I developed our team's first EKF, designed for 6DOF state estimation. The filter was initially built and tested in our in-house Python simulator PySim to verify its behavior. After showing successful state-estimation, the algorithm was translated into C++ to be flown on our student-designed flight computer MIDAS.</p>
+                    
+                    <div style="text-align: center;">
+                        <a href="https://github.com/ISSUIUC/SAM-Turret/tree/refactor-repo" class="project-link" target="_blank">SAM Turret</a> 
+                    </div>
+                    
+                    <p style="margin-top: 12px;">The SAM turret was our autonomous motor-mounted antenna turret tasked with tracking our rocket for telemetry that was developed under my leadership. The 3DOF PID motor control algorithm was implemented on a MIDAS board which connected to a motor board via ESPNow.</p>
+                </div>
+                <p class="tech-stack">Tech Stack: Python, C++, Kalman Filters, Control Theory, Dynamics, Embedded Systems</p>
+            </div>
+
+            <div class="project-card">
+                <h3>Multi-Spacecraft Positioning for Interstellar Object Exploration</h3>
+                <p>Developed a probabilistic multi-spacecraft deployment strategy that positions spacecraft to maximize visual information during interstellar object encounters using an uncertainty-aware cost function. Published research demonstrating optimal spacecraft terminal positions and points of interest selection.</p>
+                <p class="tech-stack">Tech Stack: Python, MATLAB</p>
+            </div>
+
+            <div class="project-card">
+                <h3>DiffTune: Auto-tuning through Auto-differentiation</h3>
+                <p>Implemented a gradient-descent based framework to efficiently tune parameters for controllers, leveraging automatic differentiation for optimization.</p>
+                <p class="tech-stack">Tech Stack: Python, MATLAB, JAX, SciPy</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Shishir Bhatta. Built with HTML, CSS, and JavaScript.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const stars = [];
+        const numStars = 200;
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 10,
+                speed: Math.random() * 0.1 + 0.001
+            });
+        }
+
+        function drawStars() {
+            ctx.fillStyle = '#0a0e27';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = 'white';
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.fillRect(star.x, star.y, star.radius, star.radius);
+                ctx.fill();
+                
+                star.y += star.speed;
+                if (star.y > canvas.height) {
+                    star.y = 0;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+            
+            requestAnimationFrame(drawStars);
+        }
+
+        drawStars();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
