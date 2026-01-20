@@ -347,6 +347,23 @@
             border-bottom: none;
         }
 
+        .experience-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .experience-header h3 {
+            margin: 0;
+        }
+
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
         .role {
             color: #6c757d;
             font-style: italic;
@@ -516,7 +533,6 @@
         <div class="progress-dot" data-planet="experience" title="Experience"></div>
         <div class="progress-dot" data-planet="projects" title="Projects"></div>
         <div class="progress-dot" data-planet="skills" title="Skills"></div>
-        <!-- <div class="progress-dot" data-planet="gallery" title="Gallery"></div> -->
         <div class="progress-dot" data-planet="contact" title="Contact"></div>
     </div>
 
@@ -590,10 +606,10 @@
     <div id="about-modal" class="modal">
         <button class="close-btn" onclick="closeModal()">×</button>
         <h2>About Me</h2>
-            <p>I'm a senior at the University of Illinois Urbana-Champaign pursuing a B.S. in Aerospace Engineering with a minor in Computer Science. I specialize in Guidance, Navigation, and Control (GNC) &#129517; and flight software &#128187; for autonomous systems.</p>
-            <p>I'm passionate about the intersection of aerospace and software engineering, particularly in creating robust, safety-critical systems for autonomous operations.</p>
-            <p>Currently, I'm conducting research at the ACXIS Lab on SLAM-augmented vision-language models for robotic decision-making &#129504;&#129302;.</p>
-            <p>Outside of technical work, I "enjoy" watching Chicago sports &#128059;&#128002;, run &#127939; and dabble in photography &#128248;. Also enjoy Nick Jonas.</p>
+        <p>I'm a senior at the University of Illinois Urbana-Champaign pursuing a B.S. in Aerospace Engineering with a minor in Computer Science. I specialize in Guidance, Navigation, and Control (GNC) and flight software for autonomous systems.</p>
+        <p>I'm passionate about the intersection of aerospace and software engineering, particularly in creating robust, safety-critical systems for autonomous operations.</p>
+        <p>Currently, I'm conducting research at the ACXIS Lab on SLAM-augmented vision-language models for robotic decision-making.</p>
+        <p>Outside of technical work, I love spending time with my girlfriend, watching Chicago sports, enjoy running and photography.</p>
     </div>
 
     <div id="experience-modal" class="modal">
@@ -601,7 +617,10 @@
         <h2>Industry Experience</h2>
         
         <div class="experience-item">
-            <h3>Anduril Industries</h3>
+            <div class="experience-header">
+                <h3>Anduril Industries </h3>
+                <!-- <img src="files/images/anduril-logo.png" alt="Anduril" class="company-logo"> -->
+            </div>
             <p class="role">Software Engineering Intern | May 2025 - October 2025</p>
             <ul>
                 <li>Architected route-planning algorithm for vehicle management system to ensure safety-critical requirements</li>
@@ -611,7 +630,10 @@
         </div>
 
         <div class="experience-item">
-            <h3>Brunswick</h3>
+            <div class="experience-header">
+                <h3>Brunswick</h3>
+                <!-- <img src="files/images/brunswick-logo.png" alt="Brunswick" class="company-logo"> -->
+            </div>
             <p class="role">Controls Engineering Intern | Jan 2025 - May 2025</p>
             <ul>
                 <li>Modeled hydrofoil vessel dynamics with active roll and pitch control using high-fidelity Python simulation</li>
@@ -621,8 +643,11 @@
         </div>
 
         <div class="experience-item">
-            <h3>AstroForge</h3>
-            <p class="role">Flight Software Engineering Intern | June 2024 - Aug 2024</p>
+            <div class="experience-header">
+                <h3>AstroForge</h3>
+                <img src="files/images/astroforge-logo.png" alt="AstroForge" class="company-logo">
+            </div>
+            <p class="role">Software Engineering Intern | June 2024 - Aug 2024</p>
             <ul>
                 <li>Developed SITL environment for ADCS components in Rust, enhancing automation in integration testing</li>
                 <li>Containerized FSW environment with LXC, enabling software execution without hardware</li>
@@ -635,43 +660,132 @@
         <button class="close-btn" onclick="closeModal()">×</button>
         <h2>Featured Projects</h2>
         
-        <h3>Illinois Space Society - Spaceshot GNC System</h3>
-        <p>I attribute the majority of my technical knowledge to my favorite UIUC club. I spent 3+ years working as a GNC and FSW engineer, eventually becoming the GNC subteam lead in 2024-25.</p>
-        
-        <div style="text-align: center; margin: 15px 0;">
-            <a href="https://github.com/ISSUIUC/ISS-Controls" class="project-link" target="_blank">Extended Kalman Filter (EKF)</a>
-        </div>
-        <p>My team and I developed our team's first EKF, designed for 6DOF state estimation. The filter was initially built and tested in our in-house Python simulator PySim to verify its behavior.</p>
-        
-        <div style="text-align: center; margin: 15px 0;">
-            <a href="https://github.com/ISSUIUC/SAM-Turret/tree/refactor-repo" class="project-link" target="_blank">SAM Turret</a>
-        </div>
-        <p>The SAM turret was our autonomous motor-mounted antenna turret tasked with tracking our rocket for telemetry that was developed under my leadership.</p>
+        <!-- ISS Projects Card -->
+        <div class="project-card iss-project" onclick="toggleProject(this)">
+            <div class="project-card-header">
+                <h3>Illinois Space Society - Spaceshot GNC and FSW</h3>
+                <span class="expand-icon">▼</span>
+            </div>
+            <p> 3+ years of hands-on experience with state estimation, control systems, and embedded flight software. Led GNC development for student-designed rockets as team lead. Increased team attendance by 400% as lead and began development of 3 new projects.</p>
+            <div class="tech-badges">
+                <span class="tech-badge python">Python</span>
+                <span class="tech-badge cpp">C++</span>
+                <span class="tech-badge">Embedded</span>
+                <span class="tech-badge">RTOS</span>
+            </div>
+            <div class="project-details">
+                <h3 style="margin-top: 15px; font-size: 0.9em;">Extended Kalman Filter (EKF)</h3>
+                <p>Developed the team's first EKF for 6DOF state estimation. Built and validated in our Python simulator PySim, then translated to C++ for deployment on our student-built MIDAS flight computer.</p>
+                <p><strong>Challenge:</strong> Achieving real-time 6DOF state estimation with limited computational resources on embedded hardware.</p>
+                <p><strong>Impact:</strong> Improved guidance accuracy as a redundancy for other altimeters onboard. Eventually the EKF will dictate FSM states for the computer. Currently working on integrating angular EKF and improving estimation.</p>
 
-        <h3 style="margin-top: 30px;">Multi-Spacecraft Positioning for ISO Exploration</h3>
-        <p>Developed a probabilistic multi-spacecraft deployment strategy that positions spacecraft to maximize visual information during interstellar object encounters using an uncertainty-aware cost function.</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://github.com/ISSUIUC/ISS-Controls" class="project-link" target="_blank">View EKF Code</a>
+                </div>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://github.com/ISSUIUC/MIDAS-Software/tree/main/MIDAS/src/gnc" class="project-link" target="_blank">View FSW GNC Code</a>
+                </div>
+                
+                <h3 style="margin-top: 20px; font-size: 0.9em;">SAM Turret</h3>
+                <p>Autonomous motor-mounted antenna system for real-time rocket tracking and telemetry transmission. Implemented 3DOF PID control on MIDAS board communicating via ESPNow.</p>
+                <p><strong>Challenge:</strong> Maintaining stable tracking at high angular velocities while ensuring reliable wireless communication.</p>
+                <p><strong>Impact:</strong> Achieved 99% uptime for telemetry during flight tests, crucial for post-flight analysis.</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://github.com/ISSUIUC/SAM-Turret/tree/refactor-repo" class="project-link" target="_blank">View Turret Code</a>
+                </div>
+            </div>
+        </div>
 
-        <h3>DiffTune: Auto-tuning through Auto-differentiation</h3>
-        <p>Implemented a gradient-descent based framework to efficiently tune parameters for controllers, leveraging automatic differentiation for optimization.</p>
+        <!-- Multi-Spacecraft Card -->
+        <div class="project-card research-project" onclick="toggleProject(this)">
+            <div class="project-card-header">
+                <h3>Multi-Spacecraft Positioning for ISO Exploration</h3>
+                <span class="expand-icon">▼</span>
+            </div>
+            <p>Published research on probabilistic spacecraft deployment strategies for interstellar object (ISO) encounters using uncertainty-aware cost functions. Presented at the 2025 IEEE AeroConf.</p>
+            <div class="tech-badges">
+                <span class="tech-badge python">Python</span>
+                <span class="tech-badge matlab">MATLAB</span>
+                <span class="tech-badge">Optimization</span>
+            </div>
+            <div class="project-details">
+                <p style="margin-top: 15px;">Developed algorithms to maximize visual information capture during rare ISO flybys by optimally positioning multiple spacecraft.</p>
+                <p><strong>Challenge:</strong> Providing probabilistic guarantees for viewing the ISO despite the high uncertainty in ISO trajectory and resource contraints.</p>
+                <p><strong>Impact:</strong> Demonstrated viable positioning algorithm for maximizing visual data collection. Published in peer-reviewed conference.</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://github.com/Arna-Bhardwaj/Information-Optimal-Multi-Spacecraft-Positioning-for-Interstellar-Object-Exploration" class="project-link" target="_blank">View Code</a>
+                </div>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://arxiv.org/abs/2411.09110" class="project-link" target="_blank">View Paper</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drone RL Card -->
+        <div class="project-card research-project" onclick="toggleProject(this)">
+            <div class="project-card-header">
+                <h3>Safe RL for Drone Navigation Using Constrained PPO</h3>
+                <span class="expand-icon">▼</span>
+            </div>
+            <p>Implemented both proximal policy optimization (PPO) and constrained PPO (CPPO) to compare the number of safety violations and learning rate differences between the algorithms.</p>
+            <div class="tech-badges">
+                <span class="tech-badge python">Python</span>
+                <span class="tech-badge">PyTorch</span>
+                <span class="tech-badge">Control Theory</span>
+                <span class="tech-badge">Reinforcement Learning</span>
+            </div>
+            <div class="project-details">
+                <p style="margin-top: 15px;">Used a Lagrangian-based constrain on typical PPO implementations for the algorithm. The agent operated in a Pybullet gymnasium that contained an obstacle the agent should avoid when navigating to the goal position.</p>
+                <p><strong>Challenge:</strong>Traditional model-free RL algorithms don't provide formal safety guarantees for drone navigation and can exhibit harmful behaviors during the learning phase.</p>
+                <p><strong>Impact:</strong>CPPO showed fewer safety violations and better learning efficiency compared to PPO, demonstrating promise as a viable method for safe RL.</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://github.com/sh1shir/Safe-Drone-Navigation-with-CPPO" class="project-link" target="_blank">View Code</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- DiffTune Card -->
+        <div class="project-card tools-project" onclick="toggleProject(this)">
+            <div class="project-card-header">
+                <h3>DiffTune: Auto-tuning through Auto-differentiation</h3>
+                <span class="expand-icon">▼</span>
+            </div>
+            <p>Gradient-descent framework for efficient controller parameter tuning using automatic differentiation.</p>
+            <div class="tech-badges">
+                <span class="tech-badge python">Python</span>
+                <span class="tech-badge matlab">MATLAB</span>
+                <span class="tech-badge jax">JAX</span>
+                <span class="tech-badge">SciPy</span>
+            </div>
+            <div class="project-details">
+                <p style="margin-top: 15px;">Leverages automatic differentiation to compute gradients of control performance metrics with respect to controller gains, enabling efficient optimization.</p>
+                <p><strong>Challenge:</strong> Traditional PID tuning is time-consuming and often requires domain expertise. Needed a systematic, automated approach.</p>
+                <p><strong>Impact:</strong> Reduced tuning time from hours to minutes while achieving better performance metrics. Made controller optimization accessible to non-experts.</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <a href="https://github.com/sh1shir/DiffTune-Quadrotor-Example" class="project-link" target="_blank">View Code</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="skills-modal" class="modal">
         <button class="close-btn" onclick="closeModal()">×</button>
         <h2>Skills</h2>
         <div>
-            <span class="skill-tag">Embedded Software</span>
-            <span class="skill-tag">Control Theory</span>
-            <span class="skill-tag">Kalman Filters</span>
-            <span class="skill-tag">Reinforcement Learning</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">C/C++</span>
-            <span class="skill-tag">Rust</span>
-            <span class="skill-tag">MATLAB</span>
-            <span class="skill-tag">Docker</span>
-            <span class="skill-tag">Linux</span>
-            <span class="skill-tag">NixOS</span>
-            <span class="skill-tag">JAX</span>
-            <span class="skill-tag">PyTorch</span>
+            <span class="tech-badge">Embedded Software</span>
+            <span class="tech-badge">Control Theory</span>
+            <span class="tech-badge">Kalman Filters</span>
+            <span class="tech-badge">Reinforcement Learning</span>
+            <span class="tech-badge python">Python</span>
+            <span class="tech-badge cpp">C/C++</span>
+            <span class="tech-badge rust">Rust</span>
+            <span class="tech-badge matlab">MATLAB</span>
+            <span class="tech-badge">Docker</span>
+            <span class="tech-badge">Linux</span>
+            <span class="tech-badge">NixOS</span>
+            <span class="tech-badge jax">JAX</span>
+            <span class="tech-badge">PyTorch</span>
         </div>
     </div>
 
@@ -692,6 +806,7 @@
         <h2>🛰️ You heard about Pluto?</h2>
         <p style="font-size: 1.3em; color: #a8dadc;">Congratulations, space explorer! Thanks for making it all the way out here :)</p>
         <p>Here's some pictures I've taken I want to showcase. Thanks for visiting!</p>
+
     </div>
 
     <script>
@@ -745,11 +860,12 @@
             experience: 900,
             projects: 1300,
             skills: 1750,
+            gallery: 1550,
             contact: 2100,
             secret: 4000
         };
 
-        const planetOrder = ['home', 'about', 'experience', 'projects', 'skills', 'contact', 'secret'];
+        const planetOrder = ['home', 'about', 'experience', 'projects', 'gallery', 'skills', 'contact', 'secret'];
         let currentPlanetIndex = 0;
 
         document.addEventListener('keydown', (e) => {
